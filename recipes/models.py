@@ -7,24 +7,23 @@ class Recipe(models.Model):
     description = models.TextField()
     cooking_time = models.IntegerField()
     ingredients = models.TextField()
-
-    DIFFICULTY_LEVELS = (
+    difficulty_level_choices = (
         ('easy', 'Easy'),
         ('medium', 'Medium'),
         ('hard', 'Hard'),
     )
-    difficulty_level = models.CharField(max_length=10, choices=DIFFICULTY_LEVELS)
+    difficulty_level = models.CharField(max_length=10, choices=difficulty_level_choices)
 
-    pic = models.ImageField(upload_to='recipes/', storage=OverwriteStorage())
+    pic = models.ImageField(upload_to='recipes', storage=OverwriteStorage())
 
-    CATEGORY_CHOICES = (
+    category_choices = (
         ('breakfast', 'Breakfast'),
         ('lunch', 'Lunch'),
         ('dinner', 'Dinner'),
         ('snack', 'Snack'),
         ('dessert', 'Dessert'),
     )
-    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='lunch')
+    category = models.CharField(max_length=10, choices=category_choices, default='lunch')
 
     def __str__(self):
         return self.name
