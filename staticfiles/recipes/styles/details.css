@@ -1,0 +1,94 @@
+/* General styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-image: url('../images/kitchen.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
+}
+
+
+
+
+/* Navbar styles */
+.navbar {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+/* Recipe image styles */
+.recipe-image {
+  max-width: 420px; /* Adjust image size */
+  height: auto;
+  border-radius: 5px;
+  margin-right: 20px;
+  border: 2px solid black;
+}
+
+/* Container styles */
+.container {
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Table styles */
+table {
+  border: 1px solid white; /* Set the border color to white */
+  border-collapse: collapse;
+  margin-top: 20px;
+  max-width: 950px;
+  background-color: rgba(149, 174, 202, 0.759); /* Transparent gray background */
+  text-align: left;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+th, td {
+  border: 1px solid white; /* White table lines */
+  padding: 8px;
+}
+
+th {
+  background-color: rgba(149, 174, 202, 0.579);
+  font-weight: bold;
+}
+
+/* Table title styles */
+th[colspan="3"] {
+  text-align: center;
+  font-size: 2.0em;
+  padding: 10px;
+ background-color: rgba(99, 95, 239, 0.574); /* Very light, transparent background for title */
+}
+
+/* Table image styles */
+td img {
+  max-width: 450px;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Center the image */
+  border: 3px solid black; /* Black border around the image */
+  box-shadow: 0 0 10px black; /* Glow effect */
+}
+
+/* Responsive table */
+@media screen and (max-width: 600px) {
+  table, tr, th, td {
+    display: block;
+    width: 100%;
+  }
+}

@@ -1,0 +1,125 @@
+/* General styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-image: url('../images/kitchen.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
+}
+
+.results-title{
+  color:#c5c0c0;
+  font-weight: bold;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+/* Search container styles */
+.search-container {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space items evenly */
+  margin: 20px; /* Add some margin for spacing */
+}
+
+/* Search form styles */
+.search-form {
+  flex: 1;
+  margin-right: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  max-width: 450px;
+  position: relative; /* Position the chart relative to the form */
+}
+
+.search-form h2 {
+  margin-top: 0; /* Remove default margin */
+}
+
+
+.chart {
+  position: absolute; /* Position the chart absolutely */
+  top: 320px; /* Adjust the distance from the top */
+  left: 0px; /* Adjust the distance from the left */
+  max-width: 450px;
+  height: auto;
+  margin-top: 20px;
+
+}
+
+.search-results {
+  max-width: 850px; /* Adjust the maximum width as needed */
+  height: auto; /* Maintain aspect ratio */
+  text-align: center;
+
+}
+
+.search-results th, .search-results td {
+  border: 1px solid black;
+  color: white;
+}
+
+.search-results tr:nth-child(even) {
+  background-color: rgba(149, 174, 202, 0.759); /* Light gray background */
+}
+
+.search-results tr:nth-child(odd) {
+  background-color: rgba(149, 174, 202, 0.759); /* Lighter gray background */
+}
+
+.search-results th {
+  background-color: #627ae2; /* Green background */
+  color: white;
+}
+
+/* Add modal styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  position: relative;
+}
+
+.modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Close button styles */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 34px; /* Adjust the font size as needed */
+  cursor: pointer;
+}

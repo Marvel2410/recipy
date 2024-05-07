@@ -1,0 +1,66 @@
+body {
+  background-image: url('../images/ingimg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.login-container {
+  background-color: lightgrey; /* Set the background color of the outer container */
+  width: 500px;
+  padding: 30px 10px; /* Add some padding to the outer container */
+  border-radius: 10px; /* Add rounded corners to the outer container */
+  margin: auto;
+  border: 2px solid black; /* Add a black border around the container */
+  box-shadow: 0 0 30px rgba(243, 240, 240, 0.941); /* Add a shadow to the container */
+  text-align: center;
+}
+
+.login-form {
+  width: 300px;
+  background-color: #f9f9f9; /* Set the background color of the login form */
+  border: 2px solid #ccc;
+  padding: 30px;
+  text-align: center;
+  margin: auto;
+  border-radius: 10px; /* Add rounded corners to the login form */
+  border: 2px solid black; /* Add a black border around the form */
+}
+
+form {
+  width: 100%;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: calc(100% - 40px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.error-message {
+  color: red;
+}

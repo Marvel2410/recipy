@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe List</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'recipes/styles/search.css' %}">
+
+</head>
+
+<body>
+  <div class="navbar">
+    <a href="javascript:history.back()">Back</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="{% url 'recipes:recipe_search' %}">Search</a>
+    <a href="{% url 'recipes:recipes_list' %}">Recipes List</a>
+    <a href="#">Subscribe</a>
+    <a href="{% url 'logout' %}">Log Out</a>
+    <!-- Add more links as needed -->
+  </div>
+
+  <div class="search-container">
+    <div class="search-form">
+      <h2>Search Recipes</h2>
+      <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+        <button type="button" onclick="clearFields()">Clear all fields</button>
+        <br>
+        <br>
+      </form>
+      {% if chart %}
+      <a href="#modal-chart" class="chart-link" title="Click to enlarge"><img class="chart"
+          src="data:image/png;base64,{{ chart }}" alt="Chart"></a>
+      {% endif %}
+    </div>
+
+    <div class="search-results">
+      {% if recipes %}
+      <h2 class="results-title">Search Results</h2>
+      <table border="1">
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Cooking Time</th>
+          <th>Ingredients</th>
+          <th>Difficulty Level</th>
+          <th>Category</th>
+        </tr>
+        {% for recipe in recipes %}
+        <tr>
+          <td><a href="{% url 'recipes:recipe_details' recipe.id %}">{{ recipe.name }}</a></td>
+          <td>{{ recipe.description }}</td>
+          <td>{{ recipe.cooking_time }}</td>
+          <td>{{ recipe.ingredients }}</td>
+          <td>{{ recipe.difficulty_level }}</td>
+          <td>{{ recipe.category }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+    </div>
+  </div>
+
+  <div id="modal-chart" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img src="data:image/png;base64,{{ chart }}" alt="Chart">
+    </div>
+  </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById('modal-chart');
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Get the chart link
+    var chartLink = document.querySelector('.chart-link');
+
+    // When the user clicks the image or link, open the modal 
+    chartLink.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+  <script>
+    function clearFields() {
+      document.getElementById("id_name").value = "";
+      document.getElementById("id_ingredient").value = "";
+      document.getElementById("id_difficulty_level").selectedIndex = 0;
+      document.getElementById("id_category").selectedIndex = 0;
+      document.getElementById("id_show_all").checked = false;
+    }
+  </script>
+
+
+</body>
+
+</html>

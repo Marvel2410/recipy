@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Details</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'recipes/styles/details.css' %}">
+</head>
+
+<body>
+  <div class="navbar">
+    <a href="javascript:history.back()">Back</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="{% url 'recipes:recipe_search' %}">Search</a>
+    <a href="{% url 'recipes:recipes_list' %}">Recipes List</a>
+    <a href="#">Subscribe</a>
+    <a href="{% url 'logout' %}">Log Out</a>
+    <!-- Add more links as needed -->
+  </div>
+
+  <div class="container">
+    <table>
+      <tr>
+        <th colspan="3">{{ recipe.name }}</th>
+      </tr>
+      <tr>
+        <td>
+          <p>Cooking Time:</p>
+        </td>
+        <td>
+          <p>{{ recipe.cooking_time }} minutes</p>
+        </td>
+        <td rowspan="5">
+          <img class="recipe-image" src="{{ recipe.pic.url }}" alt="{{ recipe.name }}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Difficulty:</p>
+        </td>
+        <td>
+          <p>{{ recipe.get_difficulty_level_display }}</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Category:</p>
+        </td>
+        <td>
+          <p>{{ recipe.get_category_display }}</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Description:</p>
+        </td>
+        <td>
+          <p>{{ recipe.description }}</p>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <p>Ingredients</p>
+        </td>
+        <td>
+          <p>{{ recipe.ingredients }}</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
