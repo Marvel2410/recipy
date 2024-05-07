@@ -21,7 +21,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-ml49cp(e)=yakpevh4xz)3w)6xuq6kv7g&3^xf^)gr-n3&p#%9')
+SECRET_KEY = 'django-insecure-5&nnc6u@o6c&mom$d+r-7puhx$ob6mg7y&5)m*3gmxd%k#p&fy'
+SECRET_KEY = os.environ.get(
+  'DJANGO_SECRET_KEY',
+  'django-insecure-ml49cp(e)=yakpevh4xz)3w)6xuq6kv7g&3^xf^)gr-n3&p#%9',
+  )
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -51,6 +55,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
 ROOT_URLCONF = 'recipenewpy.urls'
 
@@ -113,18 +119,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-#AUTH
-LOGIN_URL='/login/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-#STATICFILES_DIRS=[
-   #BASE_DIR / 'static'
-#]
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
@@ -138,10 +138,17 @@ MEDIA_ROOT= BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#AUTH
+LOGIN_URL='/login/'
+
+
+
 # Heroku: Update database configuration from $DATABASE_URL.
-# import dj_database_url
-# db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
+import dj_database_url
+
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES["default"].update(db_from_env)
 
 
 
