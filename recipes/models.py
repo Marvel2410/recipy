@@ -1,4 +1,5 @@
 from django.db import models
+from .storage import OverwriteStorage
 
 # Create your models here.
 class Recipe(models.Model):
@@ -6,23 +7,24 @@ class Recipe(models.Model):
     description = models.TextField()
     cooking_time = models.IntegerField()
     ingredients = models.TextField()
-    difficulty_level_choices = (
+
+    DIFFICULTY_LEVELS = (
         ('easy', 'Easy'),
         ('medium', 'Medium'),
         ('hard', 'Hard'),
     )
-    difficulty_level = models.CharField(max_length=10, choices=difficulty_level_choices)
-    pic = models.ImageField(upload_to='recipes', default='no_image.jpg')
+    difficulty_level = models.CharField(max_length=10, choices=DIFFICULTY_LEVELS)
 
-    category_choices = (
+    pic = models.ImageField(upload_to='recipes/', storage=OverwriteStorage())
+
+    CATEGORY_CHOICES = (
         ('breakfast', 'Breakfast'),
         ('lunch', 'Lunch'),
         ('dinner', 'Dinner'),
         ('snack', 'Snack'),
         ('dessert', 'Dessert'),
     )
-    category = models.CharField(max_length=10, choices=category_choices, default='lunch')
+    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES, default='lunch')
 
-    
     def __str__(self):
         return self.name
