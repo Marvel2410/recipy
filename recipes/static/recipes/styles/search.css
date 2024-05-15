@@ -55,7 +55,7 @@ body {
   position: absolute; /* Position the chart absolutely */
   top: 320px; /* Adjust the distance from the top */
   left: 0px; /* Adjust the distance from the left */
-  max-width: 450px;
+  max-width: 400px;
   height: auto;
   margin-top: 20px;
 

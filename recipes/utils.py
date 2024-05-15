@@ -34,12 +34,12 @@ def get_chart(chart_type, data, **kwargs):
                 bar.set_alpha(0.7)  # Adjust transparency if needed
             if difficulty_level == 'medium':
                 bar.set_color('green')  # Change color for better visibility
-                bar.set_linewidth(2)  # Set the bar border width
+                bar.set_linewidth(20)  # Set the bar border width
                 bar.set_edgecolor('green')  # Set the bar border color
                 bar.set_alpha(0.7)  # Adjust transparency if needed
             if difficulty_level == 'hard':
                 bar.set_color('red')  # Change color for better visibility
-                bar.set_linewidth(30)  # Set the bar border width
+                bar.set_linewidth(10)  # Set the bar border width
                 bar.set_edgecolor('red')  # Set the bar border color
                 bar.set_alpha(0.7)  # Adjust transparency if needed
     elif chart_type == '#2':
