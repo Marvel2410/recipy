@@ -29,7 +29,7 @@ def get_chart(chart_type, data, **kwargs):
         for bar, difficulty_level in zip(bars, data['difficulty_level_choices']):
             if difficulty_level == 'easy':
                 bar.set_color('blue')  # Change color for better visibility
-                bar.set_linewidth(2)  # Set the bar border width
+                bar.set_linewidth(20)  # Set the bar border width
                 bar.set_edgecolor('blue')  # Set the bar border color
                 bar.set_alpha(0.7)  # Adjust transparency if needed
             if difficulty_level == 'medium':
