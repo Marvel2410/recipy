@@ -9,9 +9,6 @@ body {
   padding: 0; /* Remove default body padding */
 }
 
-
-
-
 /* Navbar styles */
 .navbar {
   background-color: #333;
@@ -37,8 +34,10 @@ body {
 
 /* Container styles */
 .container {
-  width: 100%;
-  height: 100vh; /* Full viewport height */
+  width: 90%; /* Increase width to spread out the text */
+  max-width: 1200px; /* Set a max-width for larger screens */
+  margin-top: 10px; /* Adjust this value to move the container higher or lower */
+  padding-top: 20px; /* Optional: Add padding to give some space inside the container */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,7 +49,7 @@ table {
   border: 1px solid white; /* Set the border color to white */
   border-collapse: collapse;
   margin-top: 20px;
-  max-width: 950px;
+  width: 100%; /* Ensure the table takes full width of the container */
   background-color: rgba(149, 174, 202, 0.759); /* Transparent gray background */
   text-align: left;
   font-size: 1.3em;
@@ -59,7 +58,6 @@ table {
 
 th, td {
   border: 1px solid white; /* White table lines */
-  padding: 8px;
 }
 
 th {
@@ -72,7 +70,7 @@ th[colspan="3"] {
   text-align: center;
   font-size: 2.0em;
   padding: 10px;
- background-color: rgba(99, 95, 239, 0.574); /* Very light, transparent background for title */
+  background-color: rgba(99, 95, 239, 0.574); /* Very light, transparent background for title */
 }
 
 /* Table image styles */
