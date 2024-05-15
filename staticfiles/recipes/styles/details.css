@@ -34,15 +34,16 @@ body {
 
 /* Container styles */
 .container {
-  width: 90%; /* Increase width to spread out the text */
-  max-width: 1200px; /* Set a max-width for larger screens */
-  margin-top: 10px; /* Adjust this value to move the container higher or lower */
-  padding-top: 20px; /* Optional: Add padding to give some space inside the container */
+  width: 90%;
+  max-width: 1200px;
+  margin: 10px auto; /* Center the container horizontally and adjust the top margin */
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 
 /* Table styles */
 table {
