@@ -1,4 +1,5 @@
 from django import forms
+from .models import Recipe
 
 DIFFICULTY_LEVEL_CHOICES = [
     ('', 'Any'),
@@ -29,4 +30,13 @@ class RecipeSearchForm(forms.Form):
     category = forms.ChoiceField(choices=CATEGORY_CHOICES, required=False, label='Category')
     show_all = forms.BooleanField(required=False)
     chart_type = forms.ChoiceField(choices=CHART_CHOICES, required=False)
+
+class RecipeForm(forms.ModelForm):
+    class Meta:
+        model = Recipe
+        fields = ['name', 'description', 'cooking_time', 'ingredients', 'difficulty_level', 'pic', 'category']
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 3}),
+            'ingredients': forms.Textarea(attrs={'rows': 3}),
+        }
     

@@ -1,14 +1,11 @@
-
-
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Recipe
-from django.views.generic import ListView, DetailView   
+from django.views.generic import ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from .forms import RecipeSearchForm, CATEGORY_CHOICES
+from .forms import RecipeForm, RecipeSearchForm, CATEGORY_CHOICES
 import pandas as pd
 from .utils import get_chart
-
 
 def home(request):
     return render(request, 'recipes/recipes_home.html')
@@ -21,15 +18,17 @@ def recipe_details(request, recipe_id):
 @login_required
 def recipes_list(request):
     recipes = Recipe.objects.all()
-    return render(request, 'recipes/recipes_list.html', {'recipes': recipes})
+    form = RecipeForm()  # Create the form instance
+    print(form)  # Debugging statement
+    return render(request, 'recipes/recipes_list.html', {'recipes': recipes, 'form': form})
 
-class RecipeListView(LoginRequiredMixin, ListView):     
-    model = Recipe                                    
-    template_name = 'recipes/recipes_list.html'             
+class RecipeListView(LoginRequiredMixin, ListView):
+    model = Recipe
+    template_name = 'recipes/recipes_list.html'
 
-class RecipeDetailView(LoginRequiredMixin, DetailView):    
-    model = Recipe                                   
-    template_name = 'recipes/recipe_details.html' 
+class RecipeDetailView(LoginRequiredMixin, DetailView):
+    model = Recipe
+    template_name = 'recipes/recipe_details.html'
 
 def recipe_search(request):
     form = RecipeSearchForm(request.GET)
@@ -75,3 +74,34 @@ def recipe_search(request):
     }
 
     return render(request, 'recipes/recipe_search.html', context)
+
+@login_required
+def add_recipe(request):
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, request.FILES)
+        if form.is_valid():
+            recipe = form.save(commit=False)
+            recipe.user = request.user
+            recipe.save()
+            return redirect('recipes:recipes_list')
+        else:
+            print(form.errors)  # Debugging: print form errors if the form is not valid
+    else:
+        form = RecipeForm()
+    return render(request, 'recipes/add_recipe.html', {'form': form})
+
+
+@login_required
+def edit_recipe(request, recipe_id):
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, request.FILES, instance=recipe)
+        if form.is_valid():
+            form.save()
+            return redirect('recipes:recipe_details', recipe_id=recipe.id)
+    else:
+        form = RecipeForm(instance=recipe)
+    return render(request, 'recipes/edit_recipe.html', {'form': form, 'recipe': recipe})
+
+
+   

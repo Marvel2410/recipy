@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recipe List</title>
   <link rel="stylesheet" type="text/css" href="{% static 'recipes/styles/list.css' %}">
-
+  <link rel="stylesheet" type="text/css" href="{% static 'recipes/styles/modal.css' %}">
 </head>
 
 <body>
@@ -19,8 +19,8 @@
     <a href="{% url 'recipes:recipe_search' %}">Search</a>
     <a href="{% url 'recipes:recipes_list' %}">Recipes List</a>
     <a href="#">Subscribe</a>
+    <a href="#" id="addRecipeLink">Add Recipe</a>
     <a href="{% url 'logout' %}">Log Out</a>
-    <!-- Add more links as needed -->
   </div>
 
   <div class="container1">
@@ -39,10 +39,43 @@
           </div>
         </a>
       </div>
-
       {% endfor %}
     </div>
   </div>
+
+  <!-- Add Recipe Modal -->
+  <div id="addRecipeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeAddRecipeModal">&times;</span>
+      <h2>Add Recipe</h2>
+      <form id="recipeForm" method="post" enctype="multipart/form-data" action="{% url 'recipes:add_recipe' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Get the modal
+    var modal = document.getElementById("addRecipeModal");
+    var btn = document.getElementById("addRecipeLink");
+    var span = document.getElementById("closeAddRecipeModal");
+
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 </body>
 
 </html>
