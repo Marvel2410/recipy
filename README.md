@@ -1,4 +1,4 @@
-# Recipe App Web Application
+# <a name="top"></a>Recipe App Web Application
 
 Live site hosted on Heroku: 
 https://tranquil-journey-26821-bbf38fa9f3ee.herokuapp.com/
@@ -15,6 +15,8 @@ https://tranquil-journey-26821-bbf38fa9f3ee.herokuapp.com/
 
 ## Introduction
 This README provides an overview of the Recipe web application developed using the Django framework. The application allows users to create, read, and add recipes, as well as search for recipes based on ingredients, difficulty, and/or title. It includes a user authentication system, an admin panel for data management, and statistical dashboards for data visualization.
+
+[Back to top](#top)
 
 ## Getting Started
 To get started with the Recipe web application, follow these steps:
@@ -34,6 +36,8 @@ To get started with the Recipe web application, follow these steps:
 5. Run the development server:
       python manage.py runserver
 
+[Back to top](#top)
+
 ## Features
 - User authentication, login, and logout
 - Recipe search by ingredient
@@ -44,8 +48,12 @@ To get started with the Recipe web application, follow these steps:
 - Django Admin dashboard for database management
 - Statistics and visualizations based on data analysis
 
+[Back to top](#top)
+
 ## User Goals
 Users can create recipes with ingredients, cooking time, and a difficulty parameter. They can also search for recipes by ingredient.
+
+[Back to top](#top)
 
 ## Technical Requirements
 - Python 3.12.3 and Django 5.0.5
@@ -54,8 +62,12 @@ Users can create recipes with ingredients, cooking time, and a difficulty parame
 - Proper error handling and user-friendly messages
 - Easy-to-use interface with simple forms and menus
 
+[Back to top](#top)
+
 ## Project Deliverables
 The project is divided into several exercises, each focusing on different aspects of the application development. Check the Project Deliverables section in repo: python-course1 for a detailed breakdown of achievements.
+
+[Back to top](#top)
 
 ## Deployment
 - Install Heroku CLI
@@ -72,6 +84,8 @@ The project is divided into several exercises, each focusing on different aspect
 
 Created by Stephanie Duda: 
 https://marvel2410.github.io/SDudaProfile/ 
+
+[Back to top](#top)
 
 
 
