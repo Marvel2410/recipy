@@ -12,7 +12,7 @@ def home(request):
 
 @login_required
 def recipe_details(request, recipe_id):
-    recipe = Recipe.objects.get(pk=recipe_id)
+    recipe = get_object_or_404(Recipe, pk=recipe_id)
     return render(request, 'recipes/recipe_details.html', {'recipe': recipe})
 
 @login_required

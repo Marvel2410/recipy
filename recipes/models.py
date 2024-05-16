@@ -3,7 +3,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 
 def get_default_user():
-    return get_user_model().objects.first().id
+    User = get_user_model()
+    user = User.objects.first()
+    if user is None:
+        user = User.objects.create(username='defaultuser', password='defaultpassword')
+    return user.id
 
 class Recipe(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=get_default_user)
